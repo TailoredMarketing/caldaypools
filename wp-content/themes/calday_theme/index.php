@@ -37,6 +37,7 @@
                             'menu'              => 'primary',
                             'theme_location'    => 'primary',
                             'container'         => 'div',
+							'menu_id'			=> 'main-menu',
                             'container_class'   => 'collapse navbar-collapse main-nav',
                             'container_id'      => 'main-nav',
                             'menu_class'        => 'nav navbar-nav',
