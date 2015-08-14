@@ -40,7 +40,7 @@
 							'menu_id'			=> 'main-menu',
                             'container_class'   => 'collapse navbar-collapse main-nav',
                             'container_id'      => 'main-nav',
-                            'menu_class'        => 'nav navbar-nav',
+                            'menu_class'        => 'nav navbar-nav pull-right',
                             'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
                             'walker'            => new wp_bootstrap_navwalker()
                             )
