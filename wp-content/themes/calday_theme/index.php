@@ -2,11 +2,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Calday Pool</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<link href='http://fonts.googleapis.com/css?family=Scada:400,700|Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><?php wp_title(''); ?></title>
+<?php wp_head(); ?>
 <link rel="stylesheet" href="/css/style.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -15,9 +14,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body <?php body_class(); ?>>
 <header id="header" class="container">
-	<img src="img/logo.png" width="144" height="144" alt=""/>
+	<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo.png" width="144" height="144" alt=""/>
 </header>
 <section id="masthead" class="container-fluid">
 	<div id="masthead-inner" class="container">
@@ -32,7 +31,7 @@
 	<div class="row">
     	<div class="homebox col-md-4">
         	<div>
-       	    	<img src="img/box-1.png" width="358" height="240" alt=""/>
+       	    	<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/box-1.png" width="358" height="240" alt=""/>
             </div>
             <div class="homebox-inner pink">
             	<h2>Book your swimming lessons today!</h2>
@@ -42,7 +41,7 @@
         </div>
         <div class="homebox col-md-4">
         	<div>
-            	<img src="img/box-2.png" width="358" height="240" alt=""/>
+            	<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/box-2.png" width="358" height="240" alt=""/>
             </div>
             <div class="homebox-inner orange">
             	<h2>Book your swimming lessons today!</h2>
@@ -52,7 +51,7 @@
         </div>
         <div class="homebox col-md-4">
         	<div>
-            	<img src="img/box-3.png" width="358" height="240" alt=""/>
+            	<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/box-3.png" width="358" height="240" alt=""/>
             </div>
             <div class="homebox-inner green">
             	<h2>Book your swimming lessons today!</h2>
@@ -111,7 +110,6 @@
         </div>
     </div>
 </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<?php wp_footer(); ?>
 </body>
 </html>
