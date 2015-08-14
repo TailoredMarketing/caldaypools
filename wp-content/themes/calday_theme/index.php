@@ -88,7 +88,7 @@
 	<div id="footer-inner" class="container">
     	<div class="row">
         	<div class="col-md-2">
-            	<img src="img/logo.png" width="144" height="144" alt=""/>
+            	<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo.png" width="144" height="144" alt=""/>
             </div>
             <div class="col-md-6">
             	<ul class="list-unstyled">
