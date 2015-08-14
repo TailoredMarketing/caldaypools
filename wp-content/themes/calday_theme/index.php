@@ -16,33 +16,38 @@
 </head>
 <body <?php body_class(); ?>>
 <header id="header" class="container">
-	<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo.png" width="144" height="144" alt=""/>
-    <nav id="nav" class="navbar navbar-default">
-        	<div class="container">
-            	<div class="row">
+	<div class="row">
+    	<div class="col-md-2">
+    		<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo.png" width="144" height="144" alt=""/>
+        </div>
+        <div class="col-md-10">
+            <nav id="nav" class="navbar navbar-default">
+                <div class="container">
+                    <div class="row">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <?php if ( function_exists('wp_nav_menu') ) { wp_nav_menu( array(
+                            'menu'              => 'primary',
+                            'theme_location'    => 'primary',
+                            'container'         => 'div',
+                            'container_class'   => 'collapse navbar-collapse main-nav',
+                            'container_id'      => 'main-nav',
+                            'menu_class'        => 'nav navbar-nav',
+                            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                            'walker'            => new wp_bootstrap_navwalker()
+                            )
+                        ); } ?>
                     </div>
-                    <?php if ( function_exists('wp_nav_menu') ) { wp_nav_menu( array(
-						'menu'              => 'primary',
-						'theme_location'    => 'primary',
-						'container'         => 'div',
-						'container_class'   => 'collapse navbar-collapse main-nav',
-						'container_id'      => 'main-nav',
-						'menu_class'        => 'nav navbar-nav',
-						'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-						'walker'            => new wp_bootstrap_navwalker()
-						)
-					); } ?>
-                 </div>
-              </div>
-        </nav>
+                </div>
+            </nav>
+        </div>
 </header>
 <section id="masthead" class="container-fluid">
 	<div id="masthead-inner" class="container">
