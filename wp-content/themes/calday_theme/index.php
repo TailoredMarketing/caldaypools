@@ -22,8 +22,6 @@
         </div>
         <div class="col-md-10">
             <nav id="nav" class="navbar navbar-default">
-                <div class="container">
-                    <div class="row">
                     <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
@@ -37,7 +35,6 @@
                             'menu'              => 'primary',
                             'theme_location'    => 'primary',
                             'container'         => 'div',
-							'menu_id'			=> 'main-menu',
                             'container_class'   => 'collapse navbar-collapse main-nav',
                             'container_id'      => 'main-nav',
                             'menu_class'        => 'nav navbar-nav pull-right',
@@ -45,8 +42,6 @@
                             'walker'            => new wp_bootstrap_navwalker()
                             )
                         ); } ?>
-                    </div>
-                </div>
             </nav>
         </div>
 </header>
