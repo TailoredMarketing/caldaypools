@@ -82,7 +82,9 @@ h1, h2, h3, h4, h5, .btn {
 	margin-top: 0;
 	padding-top: 0;
 }
-
+#main {
+	margin-bottom: 30px;
+}
 #content h1 {
 	font-size: 30px;
 	color: #29abe1;
