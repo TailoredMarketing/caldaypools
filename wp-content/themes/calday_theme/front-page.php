@@ -48,9 +48,7 @@
             <h1><span><?php the_title(); ?></span></h1>
             <?php the_content(); ?>
         </section>
-        <aside id="sidebar" class="col-md-4">
-        	<?php get_sidebar(); ?>
-        </aside>
+        <?php get_sidebar(); ?>
     </div>  
 </section>
 <?php get_footer(); ?>
