@@ -19,7 +19,7 @@
     	<div class="col-md-2">
     		<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo.png" width="144" height="144" alt=""/>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10 headerright">
             <nav id="nav" class="navbar navbar-default">
                     <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
