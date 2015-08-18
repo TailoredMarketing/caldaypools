@@ -19,11 +19,19 @@
             </div>
             <div class="col-md-3 pull-right">
             	<h2>Contact Info</h2>
-                <p><?php echo $option['theme_options']['address']['street']; ?><br>
-				   <?php echo $option['theme_options']['address']['address_2']; ?><br>
-                   <?php echo $option['theme_options']['address']['town']; ?><br>
-                   <?php echo $option['theme_options']['address']['postcode']; ?></p>
-                <p><?php echo $option['theme_options']['address']['phone']; ?></p>
+                <div itemscope itemtype="http://schema.org/LocalBusiness">
+                    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                        <span itemprop="streetAddress">
+							<?php echo $option['theme_options']['address']['street']; ?>,<br>
+                            <?php echo $option['theme_options']['address']['address_2']; ?>
+                        </span><br>
+                        <span itemprop="addressLocality"><?php echo $option['theme_options']['address']['town']; ?></span><br>
+                        <span itemprop="addressRegion"><?php echo $option['theme_options']['address']['county']; ?></span><br>
+                        <span itemprop="postalCode"><?php echo $option['theme_options']['address']['postcode']; ?></span><br>
+                        <span itemprop="addressCountry">United Kingdom</span><br>
+                        <span itemprop="telephone"><?php echo $option['theme_options']['address']['phone']; ?></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
