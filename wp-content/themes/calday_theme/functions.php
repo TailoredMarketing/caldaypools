@@ -80,7 +80,6 @@ class tailored_theme_class {
 		$tab = $tab[1];
 		$tab = str_replace( 'tab', '', $tab );
 		wp_enqueue_media();
-		print_var( $option );
 	?>
     	<div class="wrap">
             <h2>Settings</h2>
@@ -308,8 +307,6 @@ class tailored_theme_class {
 				}
             }
 			update_option($this->option_name, $array);
-			print_var( $array );
-			die();
             
         } 
         if (!isset ($_POST['_wp_http_referer']))
