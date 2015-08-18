@@ -20,10 +20,10 @@
             <div class="col-md-3 pull-right">
             	<h2>Contact Info</h2>
                 <p><?php echo $option['theme_options']['address']['street']; ?><br>
-				   Some Village<br>
-                   Wirral<br>
-                   CH12 3AB</p>
-                <p>0151 525 1000</p>
+				   <?php echo $option['theme_options']['address']['address_2']; ?><br>
+                   <?php echo $option['theme_options']['address']['town']; ?><br>
+                   <?php echo $option['theme_options']['address']['postcode']; ?></p>
+                <p><?php echo $option['theme_options']['address']['phone']; ?></p>
             </div>
         </div>
     </div>
