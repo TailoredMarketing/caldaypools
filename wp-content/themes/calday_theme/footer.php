@@ -1,3 +1,7 @@
+<?php
+	global $tailored_theme;
+	$option = $tailored_theme->get_option();
+?>
 <footer id="footer" class="container-fluid">
 	<div id="footer-inner" class="container">
     	<div class="row">
@@ -15,7 +19,7 @@
             </div>
             <div class="col-md-3 pull-right">
             	<h2>Contact Info</h2>
-                <p>Some Street<br>
+                <p><?php echo $option['theme_options']['address']['street']; ?><br>
 				   Some Village<br>
                    Wirral<br>
                    CH12 3AB</p>
