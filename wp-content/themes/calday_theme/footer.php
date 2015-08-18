@@ -27,8 +27,7 @@
                         </span><br>
                         <span itemprop="addressLocality"><?php echo $option['theme_options']['address']['town']; ?></span><br>
                         <span itemprop="addressRegion"><?php echo $option['theme_options']['address']['county']; ?></span><br>
-                        <span itemprop="postalCode"><?php echo $option['theme_options']['address']['postcode']; ?></span><br>
-                        <span itemprop="addressCountry">United Kingdom</span><br>
+                        <span itemprop="postalCode"><?php echo $option['theme_options']['address']['postcode']; ?></span><br><br>
                         <span itemprop="telephone"><?php echo $option['theme_options']['address']['phone']; ?></span>
                     </div>
                 </div>
