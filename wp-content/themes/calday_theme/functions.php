@@ -283,7 +283,15 @@ class tailored_theme_class {
                     </tr>
                 </table>            
             <?php } elseif( isset( $tab ) && $tab == 2 ) { ?>
-            
+            	<h3>Contact Details</h3>
+            	<table class="form-table">
+                    <tr>
+                        <th>Tracking Code</th>
+                        <td>
+                        	<textarea width="60%" class="large-text" name="<?php echo $this->option_name . '[theme_options][analytics][code]'; ?>" rows="10"><?php echo (isset($option['theme_options']['analytics']['code']) ? $option['theme_options']['analytics']['code'] : ''); ?></textarea>
+                        </td>
+                    </tr>
+                </table>
             <?php } elseif( isset( $tab ) && $tab == 3 ) { ?>
             
             <?php } ?>
