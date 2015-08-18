@@ -288,12 +288,32 @@ class tailored_theme_class {
                     <tr>
                         <th>Tracking Code</th>
                         <td>
-                        	<textarea width="60%" class="large-text" name="<?php echo $this->option_name . '[theme_options][analytics][code]'; ?>" rows="10"><?php echo (isset($option['theme_options']['analytics']['code']) ? $option['theme_options']['analytics']['code'] : ''); ?></textarea>
+                        	<textarea width="60%" class="large-text code" name="<?php echo $this->option_name . '[theme_options][analytics][code]'; ?>" rows="10"><?php echo (isset($option['theme_options']['analytics']['code']) ? $option['theme_options']['analytics']['code'] : ''); ?></textarea>
                         </td>
                     </tr>
                 </table>
             <?php } elseif( isset( $tab ) && $tab == 3 ) { ?>
-            
+            	<h3>Advanced</h3>
+            	<table class="form-table">
+                    <tr>
+                        <th>Custom &lt;head&gt; code</th>
+                        <td>
+                        	<textarea width="60%" class="large-text code" name="<?php echo $this->option_name . '[theme_options][advanced][head]'; ?>" rows="10"><?php echo (isset($option['theme_options']['advanced']['head']) ? $option['theme_options']['advanced']['head'] : ''); ?></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Custom CSS</th>
+                        <td>
+                        	<textarea width="60%" class="large-text code" name="<?php echo $this->option_name . '[theme_options][advanced][css]'; ?>" rows="10"><?php echo (isset($option['theme_options']['advanced']['css']) ? $option['theme_options']['advanced']['css'] : ''); ?></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Custom JS</th>
+                        <td>
+                        	<textarea width="60%" class="large-text code" name="<?php echo $this->option_name . '[theme_options][advanced][js]'; ?>" rows="10"><?php echo (isset($option['theme_options']['advanced']['js']) ? $option['theme_options']['advanced']['js'] : ''); ?></textarea>
+                        </td>
+                    </tr>
+                </table>
             <?php } ?>
             	<input type="hidden" value="tailored_theme_options_save" name="action"/>
                 <?php wp_nonce_field('tailored_theme_options_save', $this->option_name . '_nonce', TRUE); ?>
