@@ -1,9 +1,14 @@
 <?php
 	
 	
-	
 	add_filter( 'wp_pagenavi', 'ik_pagination', 10, 2 );
 	
+	if( !function_exists( 'print_var' ) ) {
+		function print_var( $array ) {
+			echo '<pre>'.print_r( $array, TRUE ).'</pre>';	
+		}
+	}
+		
 	function ik_pagination($html) {
 		$out = '';
 	  

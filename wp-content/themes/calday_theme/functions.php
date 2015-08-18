@@ -21,7 +21,7 @@ class tailored_theme_class {
 		
 		if ( ! isset( $content_width ) ) $content_width = 1170;
         add_action( 'widgets_init', array( $this, 'register_widgets' ) );
-
+		delete_option($this->option_name);
         add_theme_support( 'post-thumbnails' );
 		
 		$this->option = get_option($this->option_name);
@@ -298,14 +298,17 @@ class tailored_theme_class {
 	public function tailored_theme_options_save() {
 		if (!wp_verify_nonce($_POST[$this->option_name . '_nonce'], 'tailored_theme_options_save'))
             die('Invalid nonce.' . var_export($_POST, true));
-        $array = $this->get_option();
-        if (isset ($_POST[$this->option_name])) {
+        
+		
+		if (isset ($_POST[$this->option_name])) {
+			$array = $this->get_option();
             foreach ($_POST[$this->option_name] AS $key => $value) {
-                $array[$key] = $value;
+				foreach ( $value AS $k => $v) { 
+                	$array[$k] = $v;
+				}
             }
             update_option($this->option_name, $array);
         } 
-
         if (!isset ($_POST['_wp_http_referer']))
             die('Missing target.');
 
