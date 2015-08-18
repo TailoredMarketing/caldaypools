@@ -21,7 +21,6 @@ class tailored_theme_class {
 		
 		if ( ! isset( $content_width ) ) $content_width = 1170;
         add_action( 'widgets_init', array( $this, 'register_widgets' ) );
-		delete_option($this->option_name);
         add_theme_support( 'post-thumbnails' );
 		
 		$this->option = get_option($this->option_name);
