@@ -1,9 +1,12 @@
-<?php get_header(); ?>
+<?php 
+	get_header(); 
+	global $tailored_theme;
+	$option = $tailored_theme->get_option();
+?>
 <section id="masthead" class="container-fluid">
 	<div id="masthead-inner" class="container">
     	<div id="masthead-text" class="col-md-6 col-md-offset-2">
-        	<h1><strong>Calday Grange Swimming Pool Trust</strong></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        	<?php echo wpautop( $option['theme_options']['homepage']['intro'] ); ?>
             <p><a href="#" class="btn btn-default">Contact Us</a></p>
         </div>
     </div>
@@ -12,32 +15,32 @@
 	<div class="row">
     	<div class="homebox col-md-4">
         	<div>
-       	    	<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/box-1.png" width="358" height="240" alt=""/>
+       	    	<?php echo wp_get_attachment_image( $option['theme_options']['homepage']['boxes']['box1']['image'], 'full', array( 'class' => 'img-responsive' ) ); ?>
             </div>
             <div class="homebox-inner pink">
-            	<h2>Book Your Swimming Lessons Today!</h2>
-                <p>Are you interested in booking swimming lessons for any age group?</p>
-                <p><a href="#" class="btn btn-default">Read More</a></p>
+            	<h2><?php echo $option['theme_options']['homepage']['boxes']['box1']['header']; ?></h2>
+                <p><?php echo $option['theme_options']['homepage']['boxes']['box1']['text']; ?></p>
+                <p><a href="<?php echo $option['theme_options']['homepage']['boxes']['box1']['link']; ?>" class="btn btn-default">Read More</a></p>
             </div>
         </div>
         <div class="homebox col-md-4">
         	<div>
-            	<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/box-2.png" width="358" height="240" alt=""/>
+            	<?php echo wp_get_attachment_image( $option['theme_options']['homepage']['boxes']['box2']['image'], 'full', array( 'class' => 'img-responsive' ) ); ?>
             </div>
             <div class="homebox-inner orange">
-            	<h2>View Our Swimming Clubs</h2>
-                <p>Take the next step into a regular amateur swimming club.</p>
-                <p><a href="#" class="btn btn-default">Read More</a></p>
+            	<h2><?php echo $option['theme_options']['homepage']['boxes']['box2']['header']; ?></h2>
+                <p><?php echo $option['theme_options']['homepage']['boxes']['box2']['text']; ?></p>
+                <p><a href="<?php echo $option['theme_options']['homepage']['boxes']['box2']['link']; ?>" class="btn btn-default">Read More</a></p>
             </div>
         </div>
         <div class="homebox col-md-4">
         	<div>
-            	<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/box-3.png" width="358" height="240" alt=""/>
+            	<?php echo wp_get_attachment_image( $option['theme_options']['homepage']['boxes']['box3']['image'], 'full', array( 'class' => 'img-responsive' ) ); ?>
             </div>
             <div class="homebox-inner green">
-            	<h2>View Our Full Pool Timetable</h2>
-                <p>View the full schedule for our swimming pool by clicking below.</p>
-                <p><a href="#" class="btn btn-default">Read More</a></p>
+            	<h2><?php echo $option['theme_options']['homepage']['boxes']['box3']['header']; ?></h2>
+                <p><?php echo $option['theme_options']['homepage']['boxes']['box3']['text']; ?></p>
+                <p><a href="<?php echo $option['theme_options']['homepage']['boxes']['box3']['link']; ?>" class="btn btn-default">Read More</a></p>
             </div>
         </div>
     </div>
