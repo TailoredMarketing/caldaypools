@@ -70,7 +70,7 @@ class tailored_theme_class {
 	public function admin_menu() {
 		add_object_page('Theme Options', 'Theme Options', 'manage_options', 'theme-options', array($this, 'theme_options'), $this->admin_icon);	
 		add_submenu_page('theme-options', 'Theme Options', 'Homepage', 'manage_options', 'theme-options', array($this, 'theme_options'));
-		add_submenu_page('theme-options', 'Theme Options', 'Address', 'manage_options', 'theme-options/tab1', array($this, 'theme_options'));
+		add_submenu_page('theme-options', 'Theme Options', 'Contact Details', 'manage_options', 'theme-options/tab1', array($this, 'theme_options'));
 		add_submenu_page('theme-options', 'Theme Options', 'Analytics', 'manage_options', 'theme-options/tab2', array($this, 'theme_options'));
 		add_submenu_page('theme-options', 'Theme Options', 'Advanced', 'manage_options', 'theme-options/tab3', array($this, 'theme_options'));
 	}
@@ -87,13 +87,13 @@ class tailored_theme_class {
 
             <h2 class="nav-tab-wrapper">
                 <a class="nav-tab <?php echo(!isset($tab) || $tab == 0 ? 'nav-tab-active' : ''); ?>"
-                   href="<?php echo admin_url('theme-options'); ?>">Homepage</a>
+                   href="<?php echo admin_url('admin.php?page=theme-options'); ?>">Homepage</a>
                 <a class="nav-tab <?php echo(isset($tab) && $tab == 1 ? 'nav-tab-active' : ''); ?>"
-                   href="<?php echo admin_url('theme-options/tab1'); ?>">Address</a>
+                   href="<?php echo admin_url('admin.php?page=theme-options/tab1'); ?>">Contact Details</a>
                 <a class="nav-tab <?php echo(isset($tab) && $tab == 2 ? 'nav-tab-active' : ''); ?>"
-                   href="<?php echo admin_url('theme-options/tab1'); ?>">Analytics</a>
+                   href="<?php echo admin_url('admin.php?page=theme-options/tab2'); ?>">Analytics</a>
                 <a class="nav-tab <?php echo(isset($tab) && $tab == 3 ? 'nav-tab-active' : ''); ?>"
-                   href="<?php echo admin_url('theme-options/tab1'); ?>">Advanced</a>
+                   href="<?php echo admin_url('admin.php?page=theme-options/tab3'); ?>">Advanced</a>
             </h2>
             <form method="POST" action="<?php echo admin_url('admin-post.php'); ?>">
             <?php if ( !isset( $tab ) || $tab == 0 ) { ?>
@@ -223,11 +223,69 @@ class tailored_theme_class {
                         </td>
                     </tr>
                 </table>
-            <?php } elseif( isset( $tab ) || $tab == 1 ) { ?>
+            <?php } elseif( isset( $tab ) && $tab == 1 ) { ?>
+            	<h3>Contact Details</h3>
+            	<table class="form-table">
+                    <tr>
+                        <th>Street Address</th>
+                        <td>
+                        	<input class="regular-text" type="text" name="<?php echo $this->option_name . '[theme_options][address][street]'; ?>" value="<?php echo (isset($option['theme_options']['address']['street']) ? $option['theme_options']['address']['street'] : ''); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Address 2</th>
+                        <td>
+                        	<input class="regular-text" type="text" name="<?php echo $this->option_name . '[theme_options][address][address_2]'; ?>" value="<?php echo (isset($option['theme_options']['address']['address_2']) ? $option['theme_options']['address']['address_2'] : ''); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Town</th>
+                        <td>
+                        	<input class="regular-text" type="text" name="<?php echo $this->option_name . '[theme_options][address][town]'; ?>" value="<?php echo (isset($option['theme_options']['address']['town']) ? $option['theme_options']['address']['town'] : ''); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>County</th>
+                        <td>
+                        	<input class="regular-text" type="text" name="<?php echo $this->option_name . '[theme_options][address][county]'; ?>" value="<?php echo (isset($option['theme_options']['address']['county']) ? $option['theme_options']['address']['county'] : ''); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Postcode</th>
+                        <td>
+                        	<input class="regular-text" type="text" name="<?php echo $this->option_name . '[theme_options][address][postcode]'; ?>" value="<?php echo (isset($option['theme_options']['address']['postcode']) ? $option['theme_options']['address']['postcode'] : ''); ?>">
+                        </td>
+                    </tr>
+                    <tr><td colspan="2"><hr></td></tr>
+                    <tr>
+                        <th>Phone Number</th>
+                        <td>
+                        	<input class="regular-text" type="text" name="<?php echo $this->option_name . '[theme_options][address][phone]'; ?>" value="<?php echo (isset($option['theme_options']['address']['phone']) ? $option['theme_options']['address']['phone'] : ''); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Email Address</th>
+                        <td>
+                        	<input class="regular-text" type="text" name="<?php echo $this->option_name . '[theme_options][address][email]'; ?>" value="<?php echo (isset($option['theme_options']['address']['email']) ? $option['theme_options']['address']['email'] : ''); ?>">
+                        </td>
+                    </tr>
+                    <tr><td colspan="2"><hr></td></tr>
+                    <tr>
+                        <th>Facebook</th>
+                        <td>
+                        	<input class="regular-text" type="text" name="<?php echo $this->option_name . '[theme_options][address][facebook]'; ?>" value="<?php echo (isset($option['theme_options']['address']['facebook']) ? $option['theme_options']['address']['facebook'] : ''); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Twitter</th>
+                        <td>
+                        	<input class="regular-text" type="text" name="<?php echo $this->option_name . '[theme_options][address][twitter]'; ?>" value="<?php echo (isset($option['theme_options']['address']['twitter']) ? $option['theme_options']['address']['twitter'] : ''); ?>">
+                        </td>
+                    </tr>
+                </table>            
+            <?php } elseif( isset( $tab ) && $tab == 2 ) { ?>
             
-            <?php } elseif( isset( $tab ) || $tab == 2 ) { ?>
-            
-            <?php } elseif( isset( $tab ) || $tab == 3 ) { ?>
+            <?php } elseif( isset( $tab ) && $tab == 3 ) { ?>
             
             <?php } ?>
             	<input type="hidden" value="tailored_theme_options_save" name="action"/>
