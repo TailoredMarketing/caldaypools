@@ -10,11 +10,13 @@
             </div>
             <div class="col-md-6">
             	<ul class="list-unstyled">
-                  <li><a href="#">Prices</a></li>
-                  <li><a href="#">Timetables</a></li>
-                  <li>&nbsp;</li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Terms &amp; Conditions</a></li>
+                  <?php if ( function_exists('wp_nav_menu') ) { wp_nav_menu( array(
+                            'menu'              => 'footer',
+                            'theme_location'    => 'footer',
+                            'container'         => 'div',
+                            'container_id'      => 'footer-nav',
+                            )
+                        ); } ?>
                 </ul>
             </div>
             <div class="col-md-3 pull-right">
