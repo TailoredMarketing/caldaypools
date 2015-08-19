@@ -88,4 +88,14 @@
 		
 		return $fields;
 	}
+	add_filter( 'comment_form_defaults', 'bootstrap3_comment_form' );
+function bootstrap3_comment_form( $args ) {
+    $args['comment_field'] = '<div class="form-group comment-form-comment">
+            <label for="comment">' . _x( 'Comment', 'noun' ) . '</label> 
+            <textarea class="form-control" id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+        </div>';
+    $args['class_submit'] = 'btn btn-default'; // since WP 4.1
+    
+    return $args;
+}
 	
