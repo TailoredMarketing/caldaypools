@@ -41,7 +41,7 @@
 <header id="header" class="container">
 	<div class="row">
     	<div class="col-md-2">
-    		<img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo.png" width="144" height="144" alt=""/>
+    		<a href="/"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo.png" width="144" height="144" alt=""/></a>
         </div>
         <div class="col-md-10 headerright">
             <nav id="nav" class="navbar navbar-default">
