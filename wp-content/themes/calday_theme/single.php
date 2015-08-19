@@ -4,6 +4,7 @@
         <section id="content" class="col-md-8">
             <h1><span><?php the_title(); ?></span></h1>
             <?php the_content(); ?>
+            <?php comments_template(); ?>
         </section>
         <?php get_sidebar(); ?>
     </div>  
