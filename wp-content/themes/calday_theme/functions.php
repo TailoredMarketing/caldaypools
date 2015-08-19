@@ -375,7 +375,76 @@ class tailored_theme_class {
 	}
 	
 	public function register_post_types() {
+		$labels = array(
+			'name'               => _x( 'Clubs', 'post type general name', 'your-plugin-textdomain' ),
+			'singular_name'      => _x( 'Club', 'post type singular name', 'your-plugin-textdomain' ),
+			'menu_name'          => _x( 'Clubs', 'admin menu', 'your-plugin-textdomain' ),
+			'name_admin_bar'     => _x( 'Clubs', 'add new on admin bar', 'your-plugin-textdomain' ),
+			'add_new'            => _x( 'Add New Club', 'book', 'your-plugin-textdomain' ),
+			'add_new_item'       => __( 'Add New Clubs', 'your-plugin-textdomain' ),
+			'new_item'           => __( 'New Club', 'your-plugin-textdomain' ),
+			'edit_item'          => __( 'Edit Club', 'your-plugin-textdomain' ),
+			'view_item'          => __( 'View Club', 'your-plugin-textdomain' ),
+			'all_items'          => __( 'All Clubs', 'your-plugin-textdomain' ),
+			'search_items'       => __( 'Search Clubs', 'your-plugin-textdomain' ),
+			'parent_item_colon'  => __( 'Parent Clubs:', 'your-plugin-textdomain' ),
+			'not_found'          => __( 'No clubs found.', 'your-plugin-textdomain' ),
+			'not_found_in_trash' => __( 'No clubs found in Trash.', 'your-plugin-textdomain' )
+		);
+	
+		$args = array(
+			'labels'             => $labels,
+			'public'             => true,
+			'publicly_queryable' => false,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => false,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => true,
+			'exclude_from_search'=> true,
+			'menu_position'      => 21,
+			'menu_icon'			 => 'dashicons-universal-access',
+			'supports'           => array( 'title', 'editor', 'thumbnail' ),
+		);
 		
+		$labels2 = array(
+			'name'               => _x( 'Lessons', 'post type general name', 'your-plugin-textdomain' ),
+			'singular_name'      => _x( 'Lesson', 'post type singular name', 'your-plugin-textdomain' ),
+			'menu_name'          => _x( 'Lessons', 'admin menu', 'your-plugin-textdomain' ),
+			'name_admin_bar'     => _x( 'Lessons', 'add new on admin bar', 'your-plugin-textdomain' ),
+			'add_new'            => _x( 'Add New Lesson', 'book', 'your-plugin-textdomain' ),
+			'add_new_item'       => __( 'Add New Lesson', 'your-plugin-textdomain' ),
+			'new_item'           => __( 'New Lesson', 'your-plugin-textdomain' ),
+			'edit_item'          => __( 'Edit Lesson', 'your-plugin-textdomain' ),
+			'view_item'          => __( 'View Lesson', 'your-plugin-textdomain' ),
+			'all_items'          => __( 'All Lessons', 'your-plugin-textdomain' ),
+			'search_items'       => __( 'Search Lessons', 'your-plugin-textdomain' ),
+			'parent_item_colon'  => __( 'Parent Lessons:', 'your-plugin-textdomain' ),
+			'not_found'          => __( 'No lesson found.', 'your-plugin-textdomain' ),
+			'not_found_in_trash' => __( 'No lesson found in Trash.', 'your-plugin-textdomain' )
+		);
+	
+		$args2 = array(
+			'labels'             => $labels2,
+			'public'             => true,
+			'publicly_queryable' => false,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => false,
+			'rewrite'            => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => true,
+			'exclude_from_search'=> true,
+			'menu_position'      => 22,
+			'menu_icon'			 => 'dashicons-megaphone',
+			'supports'           => array( 'title', 'editor', 'thumbnail' ),
+		);
+	
+		register_post_type( 'clubs', $args );
+		register_post_type( 'lessons', $args2 );
 	}
 	
 	function register_taxonomies() {
