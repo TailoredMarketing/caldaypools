@@ -34,11 +34,9 @@ jQuery(document).ready(function() {
 		file_frame.open();
 	});
 	
-	window.send_to_editor = function(html) {
-		console.log( jQuery('img',html) );
-		imgurl = jQuery('img',html).attr('src');
-		jQuery('#'+inputclass+'_image').val(imgurl);
-		jQuery('#'+inputclass+'_preview img').attr('src', imgurl);
-		tb_remove();
-	}
+	jQuery('.add_club_contact').click( function( e ) {
+		e.preventDefault();
+		jQuery('#club_contact_table tbody').append('<tr><td><input type="text" name="contact_name[]" placeholder="Contact Name"></td><td><input type="text" name="contact_tel[]" placeholder="Contact Telephone"></td><td><input type="email" name="contact_email[]" placeholder="Contact Email"></td></tr>');
+	});
+	
 });

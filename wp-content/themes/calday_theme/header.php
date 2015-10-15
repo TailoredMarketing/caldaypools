@@ -44,6 +44,12 @@
     		<a href="/"><img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/logo.png" width="144" height="144" alt=""/></a>
         </div>
         <div class="col-md-10 headerright">
+        	<div id="socialhead" class="pull-right">
+            	<a href="/"><span class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-home fa-stack-1x fa-inverse"></i></span></a>
+            	<a href="https://www.facebook.com/CGSPT" target="_blank"><span class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></a>
+                <a href="/contact-us/"><span class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></a>
+               
+            </div>
             <nav id="nav" class="navbar navbar-default">
                     <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">

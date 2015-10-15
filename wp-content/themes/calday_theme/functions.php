@@ -15,9 +15,12 @@ class tailored_theme_class {
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) ); 
         add_action( 'init', array( $this, 'register_menus' ) );
-		add_action('admin_menu', array($this, 'admin_menu'));
+		add_action( 'add_meta_boxes', array( $this, 'clubs_meta_box' ) );
+		add_action( 'save_post', array( $this, 'save_club_contacts_meta' ), 10, 3 ) ;
+		add_action( 'admin_menu', array($this, 'admin_menu') );
+		add_action('pre_get_posts', array( $this, 'sort_archive_loop' ) );
 		
-		add_action('admin_post_tailored_theme_options_save', array($this, 'tailored_theme_options_save'));
+		add_action( 'admin_post_tailored_theme_options_save', array($this, 'tailored_theme_options_save') );
 		
 		if ( ! isset( $content_width ) ) $content_width = 1170;
         add_action( 'widgets_init', array( $this, 'register_widgets' ) );
@@ -366,12 +369,19 @@ class tailored_theme_class {
 			'before_title' => '<h2>',
 			'after_title' => '</h2>',
 		) );
-		
+		register_sidebar( array(
+			'name' => __( 'Clubs Sidebar', 'seowned' ),
+			'id' => 'clubs_sidebar',
+			'before_widget' => '<div class="sidebox">',
+			'after_widget' => "</div>",
+			'before_title' => '<h2>',
+			'after_title' => '</h2>',
+		) );
 	}
     
     public function register_widgets (){
 		register_widget( 'social_widget' );
-		register_widget( 'contact_widget' );
+		register_widget( 'club_contact_widget' );
 	}
 	
 	public function register_post_types() {
@@ -395,11 +405,11 @@ class tailored_theme_class {
 		$args = array(
 			'labels'             => $labels,
 			'public'             => true,
-			'publicly_queryable' => false,
+			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
-			'query_var'          => false,
-			'rewrite'            => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'clubs', 'with_front' => false ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => true,
@@ -429,11 +439,11 @@ class tailored_theme_class {
 		$args2 = array(
 			'labels'             => $labels2,
 			'public'             => true,
-			'publicly_queryable' => false,
+			'publicly_queryable' => true,
 			'show_ui'            => true,
 			'show_in_menu'       => true,
-			'query_var'          => false,
-			'rewrite'            => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'lessons', 'with_front' => false ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => true,
@@ -451,5 +461,120 @@ class tailored_theme_class {
 		
 	}
 	
+	function clubs_meta_box() {
+		add_meta_box(
+			'club_contacts_meta',
+			__( 'Club Contacts', 'myplugin_textdomain' ),
+			array( $this, 'club_contacts_meta_callback' ),
+			'clubs'
+		);
+		
+		add_meta_box(
+			'club_contacts_meta',
+			__( 'Lesson Contacts', 'myplugin_textdomain' ),
+			array( $this, 'club_contacts_meta_callback' ),
+			'lessons'
+		);
+	}
+	
+	function club_contacts_meta_callback( $post ) {
+	
+		// Add a nonce field so we can check for it later.
+		wp_nonce_field( 'club_contacts_meta_data', 'club_contacts_meta_nonce' );
+	
+		/*
+		 * Use get_post_meta() to retrieve an existing value
+		 * from the database and use the value for the form.
+		 */
+		$value = get_post_meta( $post->ID, '_club_contacts', true );
+		echo '<table id="club_contact_table">';
+		?>
+			<tbody>
+            	<tr>
+                    <th>Contact 1</th>
+                    <td><input type="text" name="contact_name_1" placeholder="Contact Name" value="<?php echo ( isset( $value['contact_name_1'] ) ? $value['contact_name_1'] : '' );?>"></td>
+                    <td><input type="text" name="contact_tel_1" placeholder="Contact Telephone" value="<?php echo ( isset( $value['contact_tel_1'] ) ? $value['contact_tel_1'] : '' );?>"></td>
+                    <td><input type="email" name="contact_email_1" placeholder="Contact Email" value="<?php echo ( isset( $value['contact_email_1'] ) ? $value['contact_email_1'] : '' );?>"></td>
+                </tr>
+                <tr>
+                	<th>Contact 2</th>
+                    <td><input type="text" name="contact_name_2" placeholder="Contact Name" value="<?php echo ( isset( $value['contact_name_2'] ) ? $value['contact_name_2'] : '' );?>"></td>
+                    <td><input type="text" name="contact_tel_2" placeholder="Contact Telephone" value="<?php echo ( isset( $value['contact_tel_2'] ) ? $value['contact_tel_2'] : '' );?>"></td>
+                    <td><input type="email" name="contact_email_2" placeholder="Contact Email" value="<?php echo ( isset( $value['contact_email_2'] ) ? $value['contact_email_2'] : '' );?>"></td>
+                </tr>
+                <tr>
+                	<th>Contact 3</th>
+                    <td><input type="text" name="contact_name_3" placeholder="Contact Name" value="<?php echo ( isset( $value['contact_name_3'] ) ? $value['contact_name_3'] : '' );?>"></td>
+                    <td><input type="text" name="contact_tel_3" placeholder="Contact Telephone" value="<?php echo ( isset( $value['contact_tel_3'] ) ? $value['contact_tel_3'] : '' );?>"></td>
+                    <td><input type="email" name="contact_email_3" placeholder="Contact Email" value="<?php echo ( isset( $value['contact_email_3'] ) ? $value['contact_email_3'] : '' );?>"></td>
+                </tr>
+                <tr>
+                	<th>Website</th>
+                    <td><input type="url" name="contact_url" placeholder="Website Address" value="<?php echo ( isset( $value['contact_url'] ) ? $value['contact_url'] : '' );?>"></td>
+                </tr>
+            </tbody>
+		<?php
+		echo '</table>';
+	}
+	
+	public function save_club_contacts_meta( $post_id ) {
+	
+		/*
+		 * We need to verify this came from the our screen and with proper authorization,
+		 * because save_post can be triggered at other times.
+		 */
+
+		// Check if our nonce is set.
+		if ( ! isset( $_POST['club_contacts_meta_nonce'] ) )
+			return $post_id;
+
+		$nonce = $_POST['club_contacts_meta_nonce'];
+
+		// Verify that the nonce is valid.
+		if ( ! wp_verify_nonce( $nonce, 'club_contacts_meta_data' ) )
+			return $post_id;
+
+		// If this is an autosave, our form has not been submitted,
+                //     so we don't want to do anything.
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+			return $post_id;
+
+		// Check the user's permissions.
+		if ( 'clubs' == $_POST['post_type'] || 'lessons' == $_POST['post_type'] ) {
+
+			if ( ! current_user_can( 'edit_page', $post_id ) )
+				return $post_id;
+	
+		} else {
+
+			if ( ! current_user_can( 'edit_post', $post_id ) )
+				return $post_id;
+		}
+
+		/* OK, its safe for us to save the data now. */
+
+		// Sanitize the user input.
+		$mydata = array(
+			'contact_name_1' => ( isset( $_POST['contact_name_1'] ) ? $_POST['contact_name_1'] : '' ),
+			'contact_tel_1' => ( isset( $_POST['contact_tel_1'] ) ? $_POST['contact_tel_1'] : '' ),
+			'contact_email_1' => ( isset( $_POST['contact_email_1'] ) ? $_POST['contact_email_1'] : '' ),
+			'contact_name_2' => ( isset( $_POST['contact_name_2'] ) ? $_POST['contact_name_2'] : '' ),
+			'contact_tel_2' => ( isset( $_POST['contact_tel_2'] ) ? $_POST['contact_tel_2'] : '' ),
+			'contact_email_2' => ( isset( $_POST['contact_email_2'] ) ? $_POST['contact_email_2'] : '' ),
+			'contact_name_3' => ( isset( $_POST['contact_name_3'] ) ? $_POST['contact_name_3'] : '' ),
+			'contact_tel_3' => ( isset( $_POST['contact_tel_3'] ) ? $_POST['contact_tel_3'] : '' ),
+			'contact_email_3' => ( isset( $_POST['contact_email_3'] ) ? $_POST['contact_email_3'] : '' ),
+			'contact_url'	=> ( isset( $_POST['contact_url'] ) ? $_POST['contact_url'] : '' ),
+		);
+				
+		// Update the meta field.
+		update_post_meta( $post_id, '_club_contacts', $mydata );
+	}
+	function sort_archive_loop($query) {
+		if ( is_post_type_archive('lessons') || is_post_type_archive('clubs') ) {
+			$query->set('order', 'ASC');
+			$query->set('orderby', 'menu_order');
+		}
+	}
 }
 $tailored_theme = new tailored_theme_class();

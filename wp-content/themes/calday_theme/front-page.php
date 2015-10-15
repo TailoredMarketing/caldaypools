@@ -7,7 +7,7 @@
 	<div id="masthead-inner" class="container">
     	<div id="masthead-text" class="col-md-6 col-md-offset-2">
         	<?php echo wpautop( $option['theme_options']['homepage']['intro'] ); ?>
-            <p><a href="#" class="btn btn-default">Contact Us</a></p>
+            <p><a href="#" class="btn btn-default">Contact Us <i class="fa fa-envelope"></i></a></p>
         </div>
     </div>
 </section>
@@ -20,7 +20,7 @@
             <div class="homebox-inner pink">
             	<h2><?php echo $option['theme_options']['homepage']['boxes']['box1']['header']; ?></h2>
                 <p><?php echo $option['theme_options']['homepage']['boxes']['box1']['text']; ?></p>
-                <p><a href="<?php echo $option['theme_options']['homepage']['boxes']['box1']['link']; ?>" class="btn btn-default">Read More</a></p>
+                <p><a href="<?php echo $option['theme_options']['homepage']['boxes']['box1']['link']; ?>" class="btn btn-default">Read More <i class="fa fa-chevron-circle-right"></i></a></p>
             </div>
         </div>
         <div class="homebox col-md-4">
@@ -30,7 +30,7 @@
             <div class="homebox-inner orange">
             	<h2><?php echo $option['theme_options']['homepage']['boxes']['box2']['header']; ?></h2>
                 <p><?php echo $option['theme_options']['homepage']['boxes']['box2']['text']; ?></p>
-                <p><a href="<?php echo $option['theme_options']['homepage']['boxes']['box2']['link']; ?>" class="btn btn-default">Read More</a></p>
+                <p><a href="<?php echo $option['theme_options']['homepage']['boxes']['box2']['link']; ?>" class="btn btn-default">Read More <i class="fa fa-chevron-circle-right"></i></a></p>
             </div>
         </div>
         <div class="homebox col-md-4">
@@ -40,7 +40,7 @@
             <div class="homebox-inner green">
             	<h2><?php echo $option['theme_options']['homepage']['boxes']['box3']['header']; ?></h2>
                 <p><?php echo $option['theme_options']['homepage']['boxes']['box3']['text']; ?></p>
-                <p><a href="<?php echo $option['theme_options']['homepage']['boxes']['box3']['link']; ?>" class="btn btn-default">Read More</a></p>
+                <p><a href="<?php echo $option['theme_options']['homepage']['boxes']['box3']['link']; ?>" class="btn btn-default">Read More <i class="fa fa-chevron-circle-right"></i></a></p>
             </div>
         </div>
     </div>
